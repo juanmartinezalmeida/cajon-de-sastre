@@ -42,7 +42,7 @@ function printImage(blob) {
     $("hr").after($("<img>").attr("src", fr.result))
       .after($("<div>").text("Blob MIME type: " + blob.type));
   };
-  fr.readAsDataURL(blob);bubble_fn_img(blob)
+  fr.readAsDataURL(blob);
 }
 
 // Add more from http://en.wikipedia.org/wiki/List_of_file_signatures
@@ -65,9 +65,8 @@ function mimeType(headerString) {
   }
 
   //if type in list, send file to javascriptToBubble
-  if ( headerString.type != "unknown") {console.log('into the if');
-     // bubble_fn_img(blob);
-      bubble_fn_check(true);
+  if ( headerString.type != "unknown") {
+      //do something
   }
     
   return type;
