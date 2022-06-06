@@ -64,7 +64,7 @@ function mimeType(headerString) {
       break;
   }
 
-  //if type in list, send file to javascriptToBubble
+  // If type in list, send file to javascriptToBubble
   if ( headerString.type != "unknown") {
       //do something
   }
