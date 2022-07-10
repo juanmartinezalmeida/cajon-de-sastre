@@ -1,0 +1,39 @@
+exports.handler = async (event) => {
+    // variables
+    let isEven;
+    let statusCode = 200;
+    let isError = false;
+    let errorMsg = 'No error. The force is strong with this one!';
+    
+    // to check that the user has provided a number
+    function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+    
+    if (isNumeric(event.number)) { 
+        // check if number is odd or even
+        // by calculating the remainder of number / 2
+        let number = event.number;
+        var result = number % 2;
+        
+        if (result == 0) {
+    	    isEven = true;
+        } else if (result != 0) {
+            isEven = false;
+        }
+    } else {
+       statusCode = 400;
+       isError = true;
+       errorMsg = 'You need to provide a number. The greatest teacher failure is.';
+    }
+    
+    // return response
+    let response = {
+      statusCode,
+      isEven,
+      isError,
+      errorMsg
+    };
+    
+    return response;
+};
