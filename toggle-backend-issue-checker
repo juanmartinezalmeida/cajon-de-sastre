@@ -1,0 +1,13 @@
+javascript:(function(){
+  var searchParams = new URLSearchParams(window.location.search);
+
+  if(searchParams.has('backend_issue_checker')) {
+    var currentValue = searchParams.get('backend_issue_checker');
+    currentValue = currentValue === 'true' ? 'false' : 'true';     
+    searchParams.set('backend_issue_checker', currentValue);
+  } else {
+    searchParams.append('backend_issue_checker', 'true');
+  }
+
+  window.location.search = searchParams.toString();
+})();
