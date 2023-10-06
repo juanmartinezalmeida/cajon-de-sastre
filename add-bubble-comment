@@ -1,0 +1,26 @@
+javascript:(function() {
+  var textarea = document.querySelector('.MultilineTextBox.property-editor-control');
+  if (!textarea || !textarea.offsetParent) {
+    var commentBtn = document.querySelector('.comment-btn');
+    if (commentBtn) {
+      commentBtn.click();
+      setTimeout(function() {
+        textarea = document.querySelector('.MultilineTextBox.property-editor-control');
+        executeActions(textarea);
+      }, 500);
+    }
+  } else {
+    executeActions(textarea);
+  }
+  
+  function executeActions(textarea) {
+    var currentDate = new Date().toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric' });
+    var oldContentLength = textarea.value.length;
+    var hasContent = textarea.value.trim() !== '';
+    var comment = 'Comment\n\n';
+    var separator = hasContent ? '\n----------\n' : '';
+    textarea.value += separator + comment + '- First Last\n' + currentDate;
+    textarea.focus();
+    textarea.setSelectionRange(hasContent ? oldContentLength + separator.length + comment.length - 9: 0, hasContent ? oldContentLength + separator.length + comment.length - 2 :7);
+  }
+})();
